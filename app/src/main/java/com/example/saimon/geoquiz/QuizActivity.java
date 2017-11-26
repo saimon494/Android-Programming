@@ -43,7 +43,6 @@ public class QuizActivity extends AppCompatActivity {
 
     private void checkAnswer(boolean userPressedTrue) {
         boolean answerIsTrue = mQuestionBank[mCurrentIndex].isAnswerTrue();
-
         int messageResId;
         if(mIsCheater) {
             messageResId = R.string.judgment_toast;
@@ -58,7 +57,6 @@ public class QuizActivity extends AppCompatActivity {
         Toast.makeText(this, messageResId, Toast.LENGTH_SHORT).show();
         mTrueButton.setEnabled(false);
         mFalseButton.setEnabled(false);
-
     }
 
     @Override
@@ -110,6 +108,7 @@ public class QuizActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 mCurrentIndex = (mCurrentIndex + 1) % mQuestionBank.length;
+                mIsCheater = false;
                 updateQuestion();
             }
         });
